@@ -8,38 +8,38 @@ public class StepTracker {
         targetStep = newTargetStep;
     }
     public void addSteps(int month, int day, int steps) {
-        arrStep[month][day - 1] += steps;
+        arrStep[month - 1][day - 1] += steps;
     }
     public boolean countStepsMonth(int month) {
-        for (int j = 0; j < arrStep[month].length; j++) {
-            System.out.print((j + 1) + " день: " + arrStep[month][j] + ", ");
+        for (int j = 0; j < arrStep[month - 1].length; j++) {
+            System.out.print((j + 1) + " день: " + arrStep[month - 1][j] + ", ");
         }
         return true;
     }
     public int statsSumStepMonth(int month) {
         int sumStepsMonth = 0;
-        for (int j = 0; j < arrStep[month].length; j++) {
-            sumStepsMonth += arrStep[month][j];
+        for (int j = 0; j < arrStep[month - 1].length; j++) {
+            sumStepsMonth += arrStep[month - 1][j];
         }
         return sumStepsMonth;
     }
     public int statsMaxStepsMonth(int month) {
         int maxStepsMonth = 0;
-        for (int j = 0; j < arrStep[month].length; j++) {
-            if (arrStep[month][j] > maxStepsMonth) {
-                maxStepsMonth = arrStep[month][j];
+        for (int j = 0; j < arrStep[month - 1].length; j++) {
+            if (arrStep[month - 1][j] > maxStepsMonth) {
+                maxStepsMonth = arrStep[month - 1][j];
             }
         }
         return maxStepsMonth;
     }
     public int statsAvgStepsMonth(int month) {
-        return statsSumStepMonth(month) / arrStep[month].length;
+        return statsSumStepMonth(month) / arrStep[month - 1].length;
     }
     public int statsBestStepsMonth(int month) {
         int countA = 0;
         int countMax = 0;
-        for (int j = 0; j < arrStep[month].length; j++) {
-            if (arrStep[month][j] >= targetStep) {
+        for (int j = 0; j < arrStep[month - 1].length; j++) {
+            if (arrStep[month - 1][j] >= targetStep) {
                 countA += 1;
                 if (countA > countMax) {
                     countMax = countA;
@@ -47,15 +47,6 @@ public class StepTracker {
             } else { countA = 0; }
         }
         return countMax;
-    }
-    public boolean printArrStep() {
-        for (int i = 0; i < arrStep.length; i++) {
-            for (int j = 0; j < arrStep[i].length; j++) {
-                System.out.print("(" + arrStep[i][j] + ") ");
-            }
-            System.out.println(" строка день (i), столбец месяц (j)");
-        }
-        return true;
     }
 }
 

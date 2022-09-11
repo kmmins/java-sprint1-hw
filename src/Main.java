@@ -4,7 +4,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Вас приветствует программа Счетчик Калорий от производителя спортивных носков.");
         StepTracker stepTracker = new StepTracker();
-        Converter converter = new Converter(0.00075, 0.05);
+        Converter converter = new Converter();
 
         while (true) {
             printMenu();
@@ -23,7 +23,7 @@ public class Main {
                 }
             }
             else if (command == 2) {
-                System.out.println("За какой месяц вы хотите ввести шаги: (введите код месяца: 0-Янв, 1-Фев, 2-Мар, 3-апр, 4-май, 5-июн, 6-июл, 7-авг, 8-сен, 9-окт, 10-ноя, 11-дек");
+                System.out.println("За какой месяц вы хотите ввести шаги: (введите код месяца: 1-Янв, 2-Фев, 3-Мар, 4-апр, 5-май, 6-июн, 7-июл, 8-авг, 9-сен, 10-окт, 11-ноя, 12-дек");
                 int month = scanner.nextInt();
                 System.out.println("За какой день в этом месяце вы хотите ввести шаги: (введите день от 1 до 30)");
                 int day = scanner.nextInt();
@@ -31,10 +31,9 @@ public class Main {
                 int steps = scanner.nextInt();
                 stepTracker.addSteps(month, day, steps);
                 System.out.println("Количество шагов сохранено!");
-                //System.out.println("Введенные шаги записаны в 2-ух мерный массив: " +stepTracker.printArrStep());
             }
             else if (command == 3) {
-                System.out.println("За какой месяц вы хотите вывести статистику шагов: (введите код месяца: 0-Янв, 1-Фев, 2-Мар, 3-апр, 4-май, 5-июн, 6-июл, 7-авг, 8-сен, 9-окт, 10-ноя, 11-дек");
+                System.out.println("За какой месяц вы хотите вывести статистику шагов: (введите код месяца: 1-Янв, 2-Фев, 3-Мар, 4-апр, 5-май, 6-июн, 7-июл, 8-авг, 9-сен, 10-окт, 11-ноя, 12-дек");
                 int month = scanner.nextInt();
                 System.out.println(stepTracker.countStepsMonth(month));
                 System.out.println("Суммарное количество шагов в выбранном месяце составило: " +stepTracker.statsSumStepMonth(month));
